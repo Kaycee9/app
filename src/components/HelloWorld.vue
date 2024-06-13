@@ -1,58 +1,94 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-router" target="_blank" rel="noopener">router</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
+  <div>
+    <div class="formContainer">
+      <img class="myImg" src="../assets/face.png" alt="face image" />
+      <form @submit.prevent="btnSubmit" class="myForm">
+        <h2 class="signUp">SIGN-UP</h2>
+
+        <label>Email*</label>
+        <input type="email" v-model="email" />
+
+        <label>Passward*</label>
+        <input type="password" v-model="passward" />
+
+        <button class="signInBtn">sign in</button>
+      </form>
+    </div>
+
+    <!-- <p>email is: {{ email }}</p>
+    <p>password is: {{ passward }}</p> -->
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  }
-}
+  data() {
+    return {
+      email: "",
+      passward: "",
+    };
+  },
+  methods: {
+    btnSubmit() {
+      if (this.passward.length > 5) {
+        alert("submitted");
+      } else {
+        alert("password too short");
+      }
+    },
+  },
+};
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
+<style>
+.formContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 1em;
+  gap: none;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
+.myForm {
+  width: 35%;
+  /* margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 5em; */
+  /* background-color: none; */
+  padding: 2em;
 }
-li {
+.myImg {
+  width: 35%;
+}
+.signUp {
+  display: block;
+}
+.myForm label {
   display: inline-block;
-  margin: 0 10px;
+  margin: 0.5em;
+  padding: 0.5em;
+  font-weight: 400;
+  color: black;
 }
-a {
-  color: #42b983;
+.myForm input {
+  display: block;
+  margin: 0.5em 8em;
+  width: 60%;
+  padding: 0.7em 0em;
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  border-bottom: 3px solid rgb(2, 2, 119);
+  cursor: pointer;
+  outline: none;
+}
+.signInBtn {
+  margin: 2em 1em;
+  padding: 1em 2.5em;
+  font-size: 1em;
+  background-color: rgb(2, 2, 119);
+  color: white;
+  border: 1em;
+  cursor: pointer;
+  border-radius: 0.5em;
+  width: 60%;
 }
 </style>
